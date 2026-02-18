@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Stationery | Premium 3D Experience</title>
+    <meta name="description"
+        content="Immersive 3D shopping experience for premium stationery items including pens, notebooks, and planners.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div id="cursor"></div>
+
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <h1>AURA</h1>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas3d"></canvas>
+
+    <header>
+        <nav>
+            <div class="logo">AURA</div>
+            <div class="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#about">About</a>
+            </div>
+            <div class="nav-actions">
+                <button id="cart-btn" aria-label="Open Cart">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="reveal-text">The Art of <span>Writing</span></h1>
+                <p class="reveal-text">Elevate your thoughts with our curated collection of premium stationery.
+                    Experience quality in every stroke.</p>
+                <div class="hero-btns">
+                    <a href="#shop" class="btn primary">Explore Collection</a>
+                    <a href="#about" class="btn secondary">Our Story</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="dot-path">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <span>Scroll</span>
+                <i data-lucide="chevron-down"></i>
+            </div>
+        </section>
+
+        <section id="shop" class="products-section">
+            <div class="section-header">
+                <h2>Featured Collection</h2>
+                <div class="filter-btns">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Pens</button>
+                    <button class="filter-btn">Notebooks</button>
+                    <button class="filter-btn">Planners</button>
+                </div>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be injected here -->
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="about-container">
+                <div class="about-text">
+                    <span class="reveal-up"
+                        style="color: var(--accent-color); font-weight: 600; letter-spacing: 0.2rem; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 1rem; display: block;">Our
+                        Story</span>
+                    <h2 class="reveal-up">Commitment to <span>Excellence</span></h2>
+                    <p class="reveal-up">Since our inception, Aura has been dedicated to the pursuit of the perfect
+                        writing experience. We believe that a pen is not just a tool, but an extension of one's soul.
+                    </p>
+                    <p class="reveal-up">Our collection is meticulously curated from the finest craftsmen around the
+                        globe, ensuring that every stroke you make is as profound as the thoughts you express.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item reveal-up">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Years of Craft</span>
+                    </div>
+                    <div class="stat-item reveal-up">
+                        <span class="stat-number">50k+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat-item reveal-up">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Quality Assured</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="contact-section">
+            <div class="contact-container">
+                <div class="contact-info reveal-up">
+                    <h2>Get in <span>Touch</span></h2>
+                    <p>Have a question or want to collaborate? Reach out to us and let's create something beautiful
+                        together.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i data-lucide="mail"></i>
+                            <span>concierge@aura.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <span>123 Stationery Way, Artisan District</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form reveal-up">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Bag</h3>
+            <button id="close-cart"><i data-lucide="x"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be injected here -->
+            <div class="empty-cart-msg">Your bag is empty</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="total-amount">₹0.00</span>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <button id="back-to-top" class="back-to-top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+            "gsap": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+          }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script type="module" src="main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
